@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Website Cloner</title>
+    <!-- <script> 
+      $(function(){
+        $("#includedContent").load("/clones/httpswwwgeeksforgeeksorg/index.html"); 
+      });
+      </script>  -->
+
+    <style>
+
+      .form-control {    
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s 
+    }
+
+    img, svg {
+        vertical-align: middle;
+        border: solid 1px grey;
+        padding: 5px;
+        width: 30px;
+        border-radius: 20px;
+    }
+
+
+      #form {
+        background: rgb(241 243 244);
+       
+      }
+
+      #customizer-panel {
+        background-color: white;
+        z-index: 99999999;
+        display:none;
+        width: 30%;
+        position: fixed;
+        /* top: 1em;
+        left: 1em;  */
+        /* width:40%;         */
+      }
+      
+      /* Style the tab content */
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+
+      .loader, .hideButton {
+      display: block;
+      z-index: 9999999999999999999;
+    }
+
+      .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .btn-check:active+.btn-secondary, .btn-check:checked+.btn-secondary, 
+    .btn-secondary.active, .btn-secondary:active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: black;
+    border-color: #51585e;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container-sm">
+      <!-- <div class="card my-5 p-3 bg-light text-dark">
+        <div class="card-body">
+          <h2 class="mb-3">Website Cloner</h2>
+          
+        </div>
+      </div> -->
+      
+
+    <div id="customizer-panel" class="form-control p-3">
+      <div class="tab">
+        <button class="tablinks btn btn-secondary" onclick="openPanel(event, 'attribute-panel')"> Attribute </button>
+        <button class="tablinks btn btn-secondary active" onclick="openPanel(event, 'style-panel')"> Style </button>        
+        <button class="tablinks btn btn-secondary" onclick="openPanel(event, 'change-element-panel')"> Change </button>        
+      </div>
+      <br>
+
+      <form  style="" id="form">        
+      <div class="text-center"> Active Element: <span  style="color: blue;" id="active-element"></span></div>
+        <div id="attribute-panel" class="tabcontent">
+          <p class="text-center"><b>Customize current element atrribute</b></p> <br>
+          <!-- <h3 style="color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="text-center">Custom style settings</h3>  -->
+          
+          <label for="href " class=" " style="display: block;" >Href</label>
+          <input id="href"  class="form-control"   type="text" name="href" placeholder="hyperlink url" />  
+
+          <label for="src " class=" " style="display:  block;">Src</label>
+          <input id="src" class="form-control "   type="text" name="src" placeholder="Image source link" />    
+
+          <label for="type " class=" " style="display:  block;">Type</label>
+          <input id="type" class="form-control " type="text" name="type" placeholder="Type of button" />    
+
+          <label for="action " class=" "style="display:  block;" >Action</label>
+          <input id="action" class="form-control " type="text" name="action" placeholder="The action attribute specifies where to send the form-data when a form is submitted" />    
+
+          <label for="method " class=" " style="display:  block;">Method</label>
+          <input id="method" class="form-control" type="text" name="method" placeholder=The method attribute specifies how to send form-data" />    
+
+        </div>
+
+        <div id="style-panel" class="tabcontent">
+          <p class="text-center"><b>Customize current element styling</b></p>   <br>
+          
+            <!-- <h3 style="color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="text-center">Custom element settings</h3> -->
+            <label for="inner_html " class=" " >Inner text</label>
+            <input class="form-control  " type="text" name="inner_html" placeholder="Input your custom text" />
+
+            <label for="color" class="">Color</label>
+            <input  class="form-control  " type="text" name="color" placeholder="Example: black or #000000"/>
+
+            <label for="background_color" class=" ">Background color</label>
+            <input class="form-control  "  type="text" name="background_color" placeholder="Example: white or #FFFFFF"/>
+            
+            <label for="margin" class=" ">Margin</label>
+            <input  class="form-control  " type="text" name="margin" placeholder="Example: 10px or 20em or 10px 0 10px 0" />                       
+
+            <label for="padding" class=" ">Padding</label>
+            <input class="form-control  " type="text" name="padding" placeholder="Example: 10px or 20em or 10px 0 10px 0" />    
+
+            <label for="border" class=" ">Border</label>
+            <input class="form-control  " type="text" name="border" placeholder="Example: solid 2px red" />    
+
+            <label for="borderradius" class=" ">Border radius</label>
+            <input class="form-control  " type="text" name="borderradius" placeholder="Example: 10px" />    
+            <!-- <div class="d-grid gap-2 m-3">                   
+            </div>                  -->
+        </div>
+
+        <div id="change-element-panel" class="tabcontent">
+
+          <p class="text-center"><b>Replace current element with a another element</b></p><br>     
+
+          <input type="radio" class="btn-check" name="optradio" id="option1" autocomplete="off" checked value="Div">
+          <label class="btn btn-primary btn-sm" for="option1">Div</label>
+
+          <input type="radio" class="btn-check" name="optradio" id="option3" autocomplete="off" value="Span">
+          <label class="btn btn-primary btn-sm" for="option3">Span</label>
+
+          <input type="radio" class="btn-check" name="optradio" id="option4" autocomplete="off" value="Heading">
+          <label class="btn btn-primary btn-sm" for="option4">Heading</label> <br> <br>
+
+          <input type="radio" class="btn-check" name="optradio" id="option5" autocomplete="off" value="Paragraph">
+          <label class="btn btn-primary btn-sm" for="option5">Paragraph</label>
+
+          <input type="radio" class="btn-check" name="optradio" id="option2" autocomplete="off" value="Hyperlink">
+          <label class="btn btn-primary btn-sm" for="option2">Hyperlink</label>
+
+          <input type="radio" class="btn-check" name="optradio" id="option6" autocomplete="off", value="Image">
+          <label class="btn btn-primary btn-sm" for="option6">Image</label>         
+          <br><br>
+          <button class="btn btn-success btn-sm" id="change-btn" type="button" > Change </button>
+          <br>
+        </div>
+
+        <br>
+        <button id="saveiframe" class="btn btn-success" type="button" >Save page</button> &nbsp;&nbsp;
+        <span id="bottomleft" onclick="moveCustomizer('bottom','left')"> <img src="/images/icons/bottomleft.png" alt=""> </span>&nbsp;
+        <span id="bottomright" onclick="moveCustomizer('bottom','right')" > <img src="/images/icons/bottomright.png" alt=""> </span>&nbsp;
+        <span id="topleft" onclick="moveCustomizer('top','left')"> <img src="/images/icons/topleft.png" alt=""> </span>&nbsp;
+        <span id="topright" onclick="moveCustomizer('top','right')"> <img src="/images/icons/topright.png" alt=""> </span> &nbsp;
+
+      </form>                 
+      </div>
+      <!-- <button id="getIframeContent" style="display: none;"  >Get Iframe Content</button> -->
+ 
+      <!-- <div id="includedContent"></div> -->
+      
+    <!-- <div> -->
+      <!-- <div class="text-center">        -->
+      <div id="number"></div>
+      <div id="issues"></div>
+    <!-- </div> -->
+
+  <div class="loader text-center">
+      <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>      
+    </div>
+  </div>
+  <iframe style="display: none;"  onload="checkIframeLoaded()"  style="height:100vh;width:100%" id="iframeid" ></iframe>
+    
+<script>
+
+function checkIframeLoaded() {
+  const loader = document.querySelector('.loader')  
+  // Get a handle to the iframe element
+  var iframe = document.getElementById('iframeid');
+  var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  // loader.style.display = 'block'    
+  
+    // let iframeLoader = do
+    // Check if loading is complete
+    if (  iframeDoc.readyState  == 'complete' ) {
+        //iframe.contentWindow.alert("Hello");
+        iframe.contentWindow.onload = function(){
+            console.log("****", frameDoc.readyState)
+        };
+        // The loading is complete, call the function we want executed once the iframe is loaded
+        iframeDoc.head.insertAdjacentHTML("beforeend", `<style>.activeElementClass {border-left: solid 5px blue;}</style>`)
+        afterLoading(iframe, loader);
+        return;
+    } 
+    // If we are here, it is not loaded. Set things up so we check   the status again in 100 milliseconds
+    window.setTimeout(checkIframeLoaded, 100);
+  }
+  function afterLoading(iframe, loader){
+      console.log("adfter loading")
+      loader.style.display = 'none' 
+      iframe.style.width ="100%";  iframe.style.height = "100vh"; iframe.style.display ="block";      
+      runbtn()  
+  }
+
+    var form = document.querySelector("#form")       
+    var customizerPanel = document.querySelector("#customizer-panel")
+    let changeBtn = document.querySelector("#change-btn") 
+    var submitbtn = document.querySelector("#submitbtn")   
+    var saveiframe = document.querySelector('#saveiframe')    
+     
+    
+    // function clickGetIframeContent(){      
+    //   runbtn()     
+
+    // }   
+
+    function getPromiseFromEvent(item, event) {
+        return new Promise((resolve) => {
+        const listener = () => {          
+          item.removeEventListener(event, function(){
+            listener()
+            });
+          resolve();
+        }
+
+        item.addEventListener(event, function(){
+            listener()
+            });
+
+      })
+    }
+
+    function runbtn(){
+      var  iframe = document.getElementById('iframeid').contentDocument || contentWindow
+      var els = iframe.getElementsByTagName("*");  
+
+        for(var i = 0; i < els.length; i++){               
+          els[i].onclick = function(e) {                     
+            return false; 
+          };
+        } 
+
+        for(var i = 0; i < els.length; i++){ 
+          els[i].addEventListener('click', function(e){
+            for(var j = 0; j < els.length; j++){          
+              if(e.target){
+                e.target.setAttribute("state", "active");
+                e.target.classList.add('activeElementClass');
+                // console.log("insideee", e.target)
+              } 
+                els[j].removeAttribute("state");
+                els[j].classList.remove('activeElementClass');
+                // console.log("outsidee")                                    
+        }
+        runChecker(iframe, els)
+        // console.log("xxxxxxxxxxxxxxxxxxx", e.target)
+      });}
+      
+                  
+    }
+
+    function runChecker(iframe, els){
+      let commonAttributes = ['DIV', 'SPAN', 'P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TABLE', 'TR', 'TD', 'UL', 'OL', 'LI']
+      let rareAttributes = ['A', 'IMG','INPUT', 'BUTTON', 'FORM']
+      var activeElement = iframe.querySelector('[state="active"]');    
+
+      let stylePanel = document.body.querySelector("#style-panel")
+      let attributePanel = document.body.querySelector("#attribute-panel")
+      let changeElementPanel = document.body.querySelector("#change-element-panel")
+      let attributePanelFormFields = document.querySelectorAll('input[name="href"],input[name="src"],input[name="type"]')
+
+      let tagName_ = activeElement.tagName
+      document.querySelector("#active-element").innerHTML = tagName_
+      stylePanel.style.display = "block"
+      // console.log("&&&&&&&&&&&", tagName_)   
+
+      if(commonAttributes.includes(tagName_)){
+          attributePanel.style.display = 'none';
+          changeElementPanel.style.display = 'none';
+          form.style.display = 'block';
+          customizerPanel.style.display = 'block';
+          form.inner_html.disabled = false;
+          styleTag(form, activeElement)
+
+          for(i = 0; i < attributePanelFormFields.length; i++){
+            form.href.disabled = true;
+            form.src.disabled = true;
+            form.type.disabled = true;
+            form.action.disabled = true;
+            form.method.disabled = true;
+
+            // attributePanelFormFields[i].style.display = 'none'
+
+          }
+
+      } else if(rareAttributes.includes(tagName_)){  
+          changeElementPanel.style.display = 'none';   
+          form.style.display = 'block';
+          customizerPanel.style.display = 'block';
+          attributePanel.style.display = 'none';          
+          styleTag(form, activeElement)
+
+
+          if(tagName_ === "A"){
+
+              aTag(form, activeElement)
+              form.inner_html.disabled = false;
+
+          } else if(tagName_ === "IMG"){
+              
+              form.inner_html.disabled = true;
+              imgTag(form, activeElement)
+
+          } else if(tagName_ === "INPUT"){
+
+              form.inner_html.disabled = true;
+              inputTag(form, activeElement)
+              form.inner_html.disabled = true;
+
+          } else if(tagName_ === "BUTTON"){  
+
+            buttonTag(form, activeElement)   
+            form.inner_html.disabled = false;
+
+          }else if(tagName_ === "FORM"){
+            
+          form.inner_html.disabled = true;
+          formTag(form, activeElement);
+
+        }
+    }        
+    } 
+    
+      changeBtn.addEventListener('click', function(event){      
+        var  iframe = document.getElementById('iframeid').contentDocument || contentWindow
+        var element = iframe.querySelector('[state="active"]');   
+        if(element.getAttribute('state') === "active"){
+          
+          let changeBtnValue = form.optradio.value
+          // console.log("hekllo",changeBtnValue )
+            if(changeBtnValue === "Image"){
+              const newElementImage = document.createElement("img");
+              newElementImage.src = "https://cdn.iconscout.com/icon/premium/png-256-thumb/thumbnail-608329.png";              
+              element.replaceWith(newElementImage)
+              
+            } else if( changeBtnValue === 'Hyperlink'){
+              const newElementHyperLink = document.createElement("a");
+              newElementHyperLink.innerHTML = "New link";
+              element.replaceWith(newElementHyperLink)
+              
+            } else if( changeBtnValue === 'Paragraph'){
+              const newElementParagraph = document.createElement("p");
+              newElementParagraph.innerText = "New paragrpah element"
+              element.replaceWith(newElementParagraph)
+                
+            } else if( changeBtnValue === 'Heading'){
+              const newElementHeading = document.createElement("h1");
+              newElementHeading.innerText = "New heading element"
+              element.replaceWith(newElementHeading)
+                
+            } else if( changeBtnValue === 'Div'){
+              const newElementDiv = document.createElement("div");
+              newElementDiv.innerText = "New div element"
+              element.replaceWith(newElementDiv)
+              
+              } else if( changeBtnValue === 'Span'){
+              const newElementSpan = document.createElement("span");
+              newElementSpan.innerText = "New span element"
+              element.replaceWith(newElementSpan)              
+            }
+        };
+      })
+
+    
+
+    function styleTag(form, element){                
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){             
+
+          let formValueHTML = form.inner_html.value
+          element.innerHTML = formValueHTML
+
+          let formValueBackgroundColor = form.background_color.value;
+          element.style.backgroundColor = formValueBackgroundColor ;    
+
+          let formValueColor = form.color.value;
+          element.style.color = formValueColor;
+
+          let formValuePadding = form.padding.value;
+          element.style.padding = formValuePadding;
+
+          let formValueMargin = form.margin.value;         
+          element.style.margin = formValueMargin;
+
+          
+          let formValueBorder = form.border.value;         
+          element.style.border = formValueBorder;
+
+          let formValueBorderRadius = form.borderradius.value;         
+          element.style.borderRadius  = formValueBorderRadius;
+
+        }
+        
+      })            
+    }
+
+    
+    function aTag(form, element){         
+        form.href.disabled = false;
+
+        form.src.disabled = true;
+        form.type.disabled = true;
+        form.action.disabled = true;
+        form.method.disabled = true;
+
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){        
+        let formValueHref = form.href.value
+        element.href = formValueHref       
+        }
+        
+      })            
+    }
+
+    function imgTag(form, element){         
+        form.src.disabled = false;        
+
+        form.href.disabled = true;
+        form.type.disabled = true;
+        form.action.disabled = true;
+        form.method.disabled = true;
+
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){        
+        let formValueSrc = form.src.value
+        element.src = formValueSrc
+        }        
+      })            
+    }
+
+    function inputTag(form, element){         
+        form.src.disabled = true;
+        form.href.disabled = true;
+        form.action.disabled = true;
+        form.method.disabled = true;
+
+        form.type.disabled = false;
+
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){        
+        let formValueType = form.type.value
+        element.type = formValueType
+        }        
+      })            
+    }
+
+    function buttonTag(form, element){         
+        form.src.disabled = true;
+        form.href.disabled = true;
+        form.action.disabled = true;
+        form.method.disabled = true;
+
+        form.type.disabled = false;
+
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){        
+        let formValueType = form.type.value
+        element.type = formValueType
+        }        
+      })            
+    }
+
+    function formTag(form, element){         
+        form.src.disabled = true;
+        form.href.disabled = true;
+        form.type.disabled = true;
+
+        form.action.disabled = false;
+        form.method.disabled = false;
+
+        // console.log("%%%%%%%%%%",form.action.labels[0])
+        // for (const label of input.labels) {
+        //     console.log(label.textContent); // "Label 1" and "Label 2"
+        //   }
+        form.addEventListener('change', function(event){
+          
+        if(element.getAttribute('state') === "active"){   
+
+        let formValueAction = form.action.value
+        element.action = formValueAction
+
+        let formValueMethod = form.method.value
+        element.method = formValueMethod
+
+        
+        }        
+      })            
+    }
+</script>
+
+<script>
+  function openPanel(evt, panelName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(panelName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+  
+<script>
+   function moveCustomizer(x,y){
+    document.querySelector("#customizer-panel").style = "display:block;position: fixed;" + x + ": 1em;" + y + ": 1em; width:30%;z-index:999999;"
+   }
+</script>
+  
+
+
+    <script type="module" src="/js/clonedetail.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/jizYRExUiTo99u79D0e0ycmN.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../fonts/jizdRExUiTo99u79D0e8fOydIRUY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/jizaRExUiTo99u79D0yEwA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/jizfRExUiTo99u79B_mh0OCtKA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/BngRUXNadjH0qYEzV7ab-oWlsbCIwRg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/BngSUXNadjH0qYEzV7ab-oWlsbg95AiLW_g.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/EJRTQgYoZZY2vCFuvAFT_rO1dw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/EJRVQgYoZZY2vCFuvAFYzro.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/EJRSQgYoZZY2vCFuvAnt66qcVy4.ttf) format('truetype');
+}
